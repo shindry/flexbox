@@ -1,37 +1,140 @@
-## Welcome to GitHub Pages
+## Responsive pricing list using Flexbox
 
-You can use the [editor on GitHub](https://github.com/shindry/shindry-r.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+### HTML
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="flexbox.css">
+</head>
+<body>
+	<h2 style="text-align:center">Responsive Pricing Tables</h2>
+	<p style="text-align:center">Resize the browser window to see the effect.</p>
+	<div id="pricing-container">
+		<div class="columns">
+			<ul class="price">
+				<li class="header">TRIAL</li>
+				<li class="grey">free!</li>
+				<li>10GB Storage</li>
+				<li>10 Emails</li>
+				<li>10 Domains</li>
+				<li>1GB Bandwidth</li>
+				<li><a href="#" class="button">Sign Up</a></li>
+			</ul>
+		</div>
+		
+		<div class="columns">
+			<ul class="price">
+				<li class="header">BASIC</li>
+				<li class="grey">$ 24.99 / year</li>
+				<li>25GB Storage</li>
+				<li>25 Emails</li>
+				<li>25 Domains</li>
+				<li>2GB Bandwidth</li>
+				<li><a href="#" class="button">Sign Up</a></li>
+			</ul>
+		</div>
+		
+		<div class="columns">
+			<ul class="price">
+				<li class="header">PRO</li>
+				<li class="grey">$ 49.99 / year</li>
+				<li>50GB Storage</li>
+				<li>50 Emails</li>
+				<li>50 Domains</li>
+				<li>5GB Bandwidth</li>
+				<li><a href="#" class="button">Sign Up</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### CSS
+```
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-### Jekyll Themes
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box; /* rwd */
+}
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/shindry/shindry-r.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+body {
+	color: #444;
+	font-family: Roboto;
+	padding: 50px;
+	height: 100vh;
+}
 
-### Support or Contact
+/* rwd */
+@media only screen and (max-width: 600px) {
+	#pricing-container {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+}
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+#pricing-container {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+}
+
+.columns {
+	margin: 25px;
+}
+
+.price {
+	list-style-type: none;
+	border: 1px solid #eee;
+	margin: 0;
+	padding: 0;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+/* Add shadows on hover */
+.price:hover {
+	box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+	background-color: #618685;
+	color: white;
+	font-size: 25px;
+  }
+  
+.price li {
+	border-bottom: 0px solid #eee;
+	padding: 20px;
+	text-align: center;
+  }
+
+/* Grey list item */
+.price .grey {
+	background-color: #eee;
+	font-size: 20px;
+}
+
+.button {
+background-color: #36486b;
+border: none;
+color: white;
+padding: 10px 25px;
+text-align: center;
+text-decoration: none;
+font-size: 18px;
+}
+
+.button:hover {
+    background:#173b67;
+}
+```
+
+For more details see [Codepen](https://codepen.io/shindry/pen/vYEKwRQ).
